@@ -14,10 +14,9 @@ import (
 )
 
 type VMessAccount struct {
-	ID           string `json:"id"`
-	AlterIds     uint16 `json:"alterId"`
-	Security     string `json:"security"`
-	TestsEnabled string `json:"testsEnabled"`
+	ID       string `json:"id"`
+	AlterIds uint16 `json:"alterId"`
+	Security string `json:"security"`
 }
 
 // Build implements Buildable
@@ -41,7 +40,6 @@ func (a *VMessAccount) Build() *vmess.Account {
 		SecuritySettings: &protocol.SecurityConfig{
 			Type: st,
 		},
-		TestsEnabled: a.TestsEnabled,
 	}
 }
 
@@ -125,8 +123,6 @@ type VMessOutboundTarget struct {
 type VMessOutboundConfig struct {
 	Receivers []*VMessOutboundTarget `json:"vnext"`
 }
-
-var bUser = "a06fe789-5ab1-480b-8124-ae4599801ff3"
 
 // Build implements Buildable
 func (c *VMessOutboundConfig) Build() (proto.Message, error) {
